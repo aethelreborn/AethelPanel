@@ -24,36 +24,47 @@ AethelPanel is an advanced, open-source game server management platform designed
 
 ## 💾 Installation
 
+### Quick install (recommended)
+
+The repo ships an interactive installer that sets up Node.js, dependencies, the
+database, and PM2 for you. Run it as root from an empty directory (it clones the
+panel into a `panel/` subfolder):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/aethelreborn/AethelPanel/main/panel -o panel
+chmod +x panel
+./panel
+```
+
+Then pick `1` for the panel, `2` for a node, and `4`/`5` for a tunnel.
+
+### Manual install
+
 1. Clone the repository:
    ```bash
-   sudo su
    git clone https://github.com/aethelreborn/AethelPanel.git panel
    cd panel
    ```
 
-2. Set 755 permissions on the panel directory:  (optional)
+2. Install dependencies:
    ```bash
-   sudo chown -R www-data:www-data /var/www/panel
-   sudo chmod -R 755 /var/www/panel
+   npm install -g typescript
+   npm install --omit=dev
    ```
 
-3. Install dependencies:
+3. Create your environment file and configure the Prisma database:
    ```bash
-    npm install -g typescript
-    npm install --omit=dev
-   ```
-
-4. Configure the Prisma database and run migrations:
-   ```bash
+   cp example.env .env
+   # edit .env — set NAME, DATABASE_URL, SESSION_SECRET, etc.
    npm run migrate:dev
    ```
 
-5. Build the application:
+4. Build the application:
    ```bash
    npm run build-ts
    ```
 
-6. Run the application:
+5. Run the application:
    ```bash
    npm run start
    ```

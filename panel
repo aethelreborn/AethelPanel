@@ -114,7 +114,7 @@ make_panel() {
     run "Seeding database" "npm run seed"
 
     run "Seeding database" "npm i -g pm2"
-    run "Starting panel with PM2" "pm2 start npm --name \"panel-dev\" -- run start:dev"
+    run "Starting panel with PM2" "pm2 start npm --name \"panel-dev\" -- run dev"
 
     echo -e "${BYELLOW}Panel started with PM2 as 'panel-dev'${RESET}"
     echo -e "${BYELLOW}Check status: pm2 status${RESET}"
@@ -166,7 +166,7 @@ start_all() {
 install_cloudflare() {
     aash_logo
     run "Adding Cloudflared GPG key" "sudo mkdir -p --mode=0755 /usr/share/keyrings && curl -fsS https://pkg.cloudflare.com/cloudflare-public-v2.gpg | sudo tee /usr/share/keyrings/cloudflare-public-v2.gpg >/dev/null"
-    run "Adding Cloudflared repo" "echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list >/novell"
+    run "Adding Cloudflared repo" "echo 'deb [signed-by=/usr/share/keyrings/cloudflare-public-v2.gpg] https://pkg.cloudflare.com/cloudflared any main' | sudo tee /etc/apt/sources.list.d/cloudflared.list >/dev/null"
     run "Installing Cloudflared" "sudo apt-get -y -qq update && sudo apt-get -y -qq install cloudflared"
     echo -e "${BYELLOW}Cloudflared installed.${RESET}"
 }
