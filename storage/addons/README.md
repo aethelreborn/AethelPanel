@@ -1,6 +1,6 @@
-# AirLink Panel Addons
+# AethelPanel Addons
 
-This directory contains addons for AirLink Panel. Addons can extend the functionality of the panel with custom features.
+This directory contains addons for AethelPanel. Addons can extend the functionality of the panel with custom features.
 
 ## Creating an Addon
 

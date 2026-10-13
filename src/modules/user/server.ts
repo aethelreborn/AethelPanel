@@ -46,7 +46,7 @@ const dashboardModule: Module = {
     description: 'This file is for dashboard functionality.',
     version: '1.0.0',
     moduleVersion: '1.0.0',
-    author: 'AirLinkLab',
+    author: 'Aethel',
     license: 'MIT',
   },
 
@@ -128,9 +128,9 @@ const dashboardModule: Module = {
                 method: 'GET',
                 url: `http://${server.node.address}:${server.node.port}/fs/file/content`,
                 responseType: 'text',
-                params: { id: server.UUID, path: './airlink/alshid.txt' },
+                params: { id: server.UUID, path: './aethelpanel/alshid.txt' },
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
               });
@@ -139,9 +139,9 @@ const dashboardModule: Module = {
                 method: 'GET',
                 url: `http://${server.node.address}:${server.node.port}/fs/file/content`,
                 responseType: 'text',
-                params: { id: server.UUID, path: './airlink/password.txt' },
+                params: { id: server.UUID, path: './aethelpanel/password.txt' },
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
               });
@@ -316,7 +316,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/stop`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -407,7 +407,7 @@ const dashboardModule: Module = {
             method: 'POST',
             url: `http://${server.node.address}:${server.node.port}/container/start`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             headers: {
@@ -481,7 +481,7 @@ const dashboardModule: Module = {
             method: 'GET',
             url: `http://${server.node.address}:${server.node.port}/fs/list?id=${server.UUID}&path=${path}`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             headers: {
@@ -492,8 +492,8 @@ const dashboardModule: Module = {
           let files = (await axios(filesRequest)).data as any[];
           files = typeof files === 'string' ? JSON.parse(files) : files;
 
-          // Filter out the airlink folder
-          files = files.filter((file: any) => file.name !== 'airlink');
+          // Filter out the aethelpanel folder
+          files = files.filter((file: any) => file.name !== 'aethelpanel');
 
           files = files.sort((a: any, b: any) => {
             if (a.type === 'directory' && b.type === 'file') {
@@ -667,7 +667,7 @@ const dashboardModule: Module = {
             responseType: 'text',
             params: { id: server.UUID, path: filePath },
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
           });
@@ -846,7 +846,7 @@ const dashboardModule: Module = {
               content: content,
             },
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
           });
@@ -915,7 +915,7 @@ const dashboardModule: Module = {
                 path: filePath,
               },
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               timeout: 10000, // 10 second timeout for large directories
@@ -975,7 +975,7 @@ const dashboardModule: Module = {
             url: `http://${server.node.address}:${server.node.port}/fs/download`,
             params: { id: server.UUID, path: filePath },
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             responseType: 'stream',
@@ -1034,7 +1034,7 @@ const dashboardModule: Module = {
             method: 'POST',
             url: `http://${server.node.address}:${server.node.port}/fs/zip`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             data: {
@@ -1105,7 +1105,7 @@ const dashboardModule: Module = {
             method: 'POST',
             url: `http://${server.node.address}:${server.node.port}/fs/unzip`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             data: {
@@ -1186,7 +1186,7 @@ const dashboardModule: Module = {
               content: 'eula=true',
             },
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
           });
@@ -1290,7 +1290,7 @@ const dashboardModule: Module = {
                 port: parseInt(primaryPort, 10)
               },
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               timeout: 8000
@@ -1395,7 +1395,7 @@ const dashboardModule: Module = {
               method: 'GET',
               url: `http://${server.node.address}:${server.node.port}/fs/list?id=${server.UUID}`,
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               headers: {
@@ -1559,7 +1559,7 @@ const dashboardModule: Module = {
             method: 'POST',
             url: `http://${server.node.address}:${server.node.port}/fs/rename`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             headers: {
@@ -1644,7 +1644,7 @@ const dashboardModule: Module = {
               method: 'POST',
               url: `http://${server.node.address}:${server.node.port}/fs/upload`,
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               headers: {
@@ -1673,7 +1673,7 @@ const dashboardModule: Module = {
               method: 'POST',
               url: `http://${server.node.address}:${server.node.port}/fs/create-empty-file`,
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               data: {
@@ -1701,7 +1701,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/fs/append-file`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 data: {
@@ -1919,7 +1919,7 @@ const dashboardModule: Module = {
               method: 'GET',
               url: `http://${server.node.address}:${server.node.port}/container/status`,
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               params: { id: serverId },
@@ -1934,7 +1934,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/stop`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -2003,7 +2003,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/start`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -2137,7 +2137,7 @@ const dashboardModule: Module = {
               method: 'GET',
               url: `http://${server.node.address}:${server.node.port}/container/status`,
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               params: { id: serverId },
@@ -2152,7 +2152,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/stop`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -2216,7 +2216,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/start`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -2374,7 +2374,7 @@ const dashboardModule: Module = {
               method: 'GET',
               url: `http://${server.node.address}:${server.node.port}/container/status`,
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               params: { id: serverId },
@@ -2389,7 +2389,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/stop`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -2453,7 +2453,7 @@ const dashboardModule: Module = {
                 method: 'POST',
                 url: `http://${server.node.address}:${server.node.port}/container/start`,
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
                 headers: {
@@ -2651,7 +2651,7 @@ const dashboardModule: Module = {
             method: 'POST',
             url: `http://${server.node.address}:${server.node.port}/container/stop`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             headers: {
@@ -2724,7 +2724,7 @@ const dashboardModule: Module = {
             method: 'POST',
             url: `http://${server.node.address}:${server.node.port}/container/start`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             headers: {
@@ -2791,7 +2791,7 @@ const dashboardModule: Module = {
             method: 'DELETE',
             url: `http://${server.node.address}:${server.node.port}/container`,
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             headers: {
@@ -2888,7 +2888,7 @@ const dashboardModule: Module = {
                     method: 'POST',
                     url: `http://${serverToReinstall.node.address}:${serverToReinstall.node.port}/container/install`,
                     auth: {
-                      username: 'Airlink',
+                      username: 'AethelPanel',
                       password: serverToReinstall.node.key,
                     },
                     headers: {
@@ -3044,7 +3044,7 @@ const dashboardModule: Module = {
             },
             {
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               timeout: 300000,
@@ -3128,7 +3128,7 @@ const dashboardModule: Module = {
             },
             {
               auth: {
-                username: 'Airlink',
+                username: 'AethelPanel',
                 password: server.node.key,
               },
               timeout: 300000,
@@ -3198,7 +3198,7 @@ const dashboardModule: Module = {
               backupPath: backup.filePath,
             },
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             responseType: 'stream',
@@ -3264,7 +3264,7 @@ const dashboardModule: Module = {
                   backupPath: backup.filePath,
                 },
                 auth: {
-                  username: 'Airlink',
+                  username: 'AethelPanel',
                   password: server.node.key,
                 },
               }

@@ -1,9 +1,9 @@
 /**
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
- *      AirLink - Open Source Project by AirlinkLabs
- *      Repository: https://github.com/airlinklabs/panel
+ *      AethelPanel - Open Source Project by Aethel
+ *      Repository: https://github.com/aethelreborn/AethelPanel
  *
- *     © 2024 AirlinkLabs. Licensed under the MIT License
+ *     © 2024 Aethel. Licensed under the MIT License
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
  */
 
@@ -39,8 +39,8 @@ process.setMaxListeners(20);
 
 const app = express();
 const port = process.env.PORT || 3000;
-const name = process.env.NAME || 'AirLink';
-const airlinkVersion = config.meta.version;
+const name = process.env.NAME || 'AethelPanel';
+const aethelpanelVersion = config.meta.version;
 
 // Load websocket
 expressWs(app);
@@ -172,7 +172,7 @@ interface SidebarItem {
 interface GlobalWithCustomProperties extends NodeJS.Global {
   uiComponentStore: typeof import('./handlers/uiComponentHandler').uiComponentStore;
   appName: string;
-  airlinkVersion: string;
+  aethelpanelVersion: string;
   adminMenuItems: SidebarItem[];
   regularMenuItems: SidebarItem[];
 }
@@ -182,10 +182,10 @@ declare const global: GlobalWithCustomProperties;
 
 app.use((_req, res, next) => {
   res.locals.name = name;
-  res.locals.airlinkVersion = airlinkVersion;
+  res.locals.aethelpanelVersion = aethelpanelVersion;
   global.uiComponentStore = uiComponentStore;
   global.appName = name;
-  global.airlinkVersion = airlinkVersion;
+  global.aethelpanelVersion = aethelpanelVersion;
 
   res.locals.adminMenuItems = uiComponentStore.getSidebarItems(undefined, true);
   res.locals.regularMenuItems = uiComponentStore.getSidebarItems(undefined, false);
@@ -219,7 +219,7 @@ app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
     await settingsLoader();
     // Initialize default UI components
     initializeDefaultUIComponents();
-    await loadModules(app, airlinkVersion, Number(port));
+    await loadModules(app, aethelpanelVersion, Number(port));
     await loadAddons(app);
 
     // Setup SPA routes

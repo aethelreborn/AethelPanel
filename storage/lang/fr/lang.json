@@ -9,28 +9,28 @@
   "adminImagesText": "Téléchargez facilement ou créez manuellement des images pour vos instances.",
 
   "adminSettingsTitle": "Paramètres",
-  "adminSettingsText": "Une liste de tous les paramètres du panneau Airlink.",
+  "adminSettingsText": "Une liste de tous les paramètres du panneau AethelPanel.",
 
   "adminEditNodeTitle": "Modifier le Nœud",
   "adminEditNodeText": "Modifier un nœud individuel.",
 
   "adminNodesTitle": "Nœuds",
-  "adminNodesText": "Une liste de tous les nœuds configurés sur le panneau Airlink.",
+  "adminNodesText": "Une liste de tous les nœuds configurés sur le panneau AethelPanel.",
 
   "adminCreateNodeTitle": "Créer un Nœud",
-  "adminCreateNodeText": "Créer un nouveau nœud sur Airlink.",
+  "adminCreateNodeText": "Créer un nouveau nœud sur AethelPanel.",
 
   "adminCreateServerTitle": "Créer un Serveur",
-  "adminCreateServerText": "Créer un nouveau serveur sur Airlink.",
+  "adminCreateServerText": "Créer un nouveau serveur sur AethelPanel.",
 
   "adminServersTitle": "Serveurs",
-  "adminServersText": "Une liste de tous les serveurs configurés sur le panneau Airlink.",
+  "adminServersText": "Une liste de tous les serveurs configurés sur le panneau AethelPanel.",
 
   "adminCreateUserTitle": "Créer un Utilisateur",
-  "adminCreateUserText": "Créer un nouvel utilisateur sur Airlink.",
+  "adminCreateUserText": "Créer un nouvel utilisateur sur AethelPanel.",
 
   "adminUsersTitle": "Utilisateurs",
-  "adminUsersText": "Une liste de tous les utilisateurs sur le panneau Airlink.",
+  "adminUsersText": "Une liste de tous les utilisateurs sur le panneau AethelPanel.",
 
   "adminUserTitle": "Utilisateur",
   "adminUserText": "Gérer un utilisateur individuel.",
@@ -70,10 +70,10 @@
   "images": "Images",
   "runningLatestVersion": "Vous utilisez la dernière version !",
   "here": "ici",
-  "newReleaseAirlink1": "Une nouvelle version, Airlink",
-  "newReleaseAirlink2": "est disponible. Veuillez cliquer",
-  "newReleaseAirlink3": "pour la télécharger !",
-  "sysInfoText": "Vous utilisez la version du panneau Airlink",
+  "newReleaseAethelPanel1": "Une nouvelle version, AethelPanel",
+  "newReleaseAethelPanel2": "est disponible. Veuillez cliquer",
+  "newReleaseAethelPanel3": "pour la télécharger !",
+  "sysInfoText": "Vous utilisez la version du panneau AethelPanel",
   "updateAccount": "Mettre à jour le compte",
   "username": "Nom d'utilisateur",
   "checking": "Vérification...",

@@ -11,7 +11,7 @@ const spaTestModule: Module = {
     description: 'Test module for Single Page Application functionality.',
     version: '1.0.0',
     moduleVersion: '1.0.0',
-    author: 'AirLinkLab',
+    author: 'Aethel',
     license: 'MIT',
   },
 

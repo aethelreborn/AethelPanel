@@ -1,9 +1,9 @@
 /**
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
- *      AirLink - Open Source Project by AirlinkLabs
- *      Repository: https://github.com/airlinklabs/panel
+ *      AethelPanel - Open Source Project by Aethel
+ *      Repository: https://github.com/aethelreborn/AethelPanel
  *
- *     © 2024 AirlinkLabs. Licensed under the MIT License
+ *     © 2024 Aethel. Licensed under the MIT License
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
  */
 
@@ -17,9 +17,9 @@ import { registerPermission } from '../../handlers/permisions';
 
 const prisma = new PrismaClient();
 
-registerPermission('airlink.admin.addons.view');
-registerPermission('airlink.admin.addons.toggle');
-registerPermission('airlink.admin.addons.reload');
+registerPermission('aethelpanel.admin.addons.view');
+registerPermission('aethelpanel.admin.addons.toggle');
+registerPermission('aethelpanel.admin.addons.reload');
 
 const addonsModule: Module = {
   info: {
@@ -27,7 +27,7 @@ const addonsModule: Module = {
     description: 'This file is for admin functionality of the Addons.',
     version: '1.0.0',
     moduleVersion: '1.0.0',
-    author: 'AirLinkLab',
+    author: 'Aethel',
     license: 'MIT',
   },
 
@@ -36,7 +36,7 @@ const addonsModule: Module = {
 
     router.get(
       '/admin/addons',
-      isAuthenticated(true, 'airlink.admin.addons.view'),
+      isAuthenticated(true, 'aethelpanel.admin.addons.view'),
       async (req: Request, res: Response) => {
         try {
           const userId = req.session?.user?.id;
@@ -74,7 +74,7 @@ const addonsModule: Module = {
 
     router.post(
       '/admin/addons/toggle/:slug',
-      isAuthenticated(true, 'airlink.admin.addons.toggle'),
+      isAuthenticated(true, 'aethelpanel.admin.addons.toggle'),
       async (req: Request, res: Response) => {
         try {
           const { slug } = req.params;
@@ -114,7 +114,7 @@ const addonsModule: Module = {
 
     router.post(
       '/admin/addons/reload',
-      isAuthenticated(true, 'airlink.admin.addons.reload'),
+      isAuthenticated(true, 'aethelpanel.admin.addons.reload'),
       async (req: Request, res: Response) => {
         try {
           const result = await reloadAddons(req.app);

@@ -1,12 +1,12 @@
 {
-  "name": "airlink-panel",
+  "name": "aethelpanel",
   "version": "1.0.0",
-  "description": "Airlink is a simple-to-use game server management panel",
+  "description": "AethelPanel is a simple-to-use game server management panel",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AirlinkLabs/panel"
+    "url": "https://github.com/aethelreborn/AethelPanel"
   },
-  "author": "AirlinkLabs",
+  "author": "Aethel",
   "license": "MIT",
   "scripts": {
     "build-ts": "tsc",

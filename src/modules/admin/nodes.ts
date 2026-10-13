@@ -73,7 +73,7 @@ const adminModule: Module = {
     description: 'This file is for admin functionality of the Nodes.',
     version: '1.0.0',
     moduleVersion: '1.0.0',
-    author: 'AirLinkLab',
+    author: 'Aethel',
     license: 'MIT',
   },
 
@@ -462,7 +462,7 @@ const adminModule: Module = {
             {
               headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Basic ${Buffer.from(`Airlink:${node.key}`).toString('base64')}`,
+                Authorization: `Basic ${Buffer.from(`AethelPanel:${node.key}`).toString('base64')}`,
               },
             }
           );

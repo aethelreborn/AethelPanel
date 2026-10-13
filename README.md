@@ -1,19 +1,19 @@
 > [!CAUTION]
-> AirLink is in development for a while and is getting used by a few people, please wait an v2.0.0
+> AethelPanel is in development for a while and is getting used by a few people, please wait an v2.0.0
 
-# Airlink Panel 🚀
+# AethelPanel 🚀
 
 **Streamlined Game Server Management**
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 
-[![License](https://img.shields.io/github/license/AirlinkLabs/panel)](https://github.com/AirlinkLabs/panel/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/aethelreborn/AethelPanel)](https://github.com/aethelreborn/AethelPanel/blob/main/LICENSE)
 [![Discord](https://img.shields.io/discord/1302020587316707420)](https://discord.gg/D8YbT9rDqz)
 
 ## 📖 Overview
 
-Airlink Panel is an advanced, open-source game server management platform designed to simplify server deployment, monitoring, and administration. With its powerful addon system, you can extend the functionality of the panel to suit your specific needs.
+AethelPanel is an advanced, open-source game server management platform designed to simplify server deployment, monitoring, and administration. With its powerful addon system, you can extend the functionality of the panel to suit your specific needs.
 
 ## 🛠 Prerequisites
 
@@ -27,7 +27,7 @@ Airlink Panel is an advanced, open-source game server management platform design
 1. Clone the repository:
    ```bash
    sudo su
-   git clone https://github.com/JishnuTheGamer/Air-link-panel.git
+   git clone https://github.com/aethelreborn/AethelPanel.git panel
    cd panel
    ```
 
@@ -93,7 +93,7 @@ Airlink Panel is an advanced, open-source game server management platform design
 
 ## 🧩 Addon System
 
-AirLink Panel features a powerful addon system that allows you to extend its functionality. Addons can add new features, modify existing ones, and integrate with external services.
+AethelPanel features a powerful addon system that allows you to extend its functionality. Addons can add new features, modify existing ones, and integrate with external services.
 
 ### Creating Addons
 
@@ -115,5 +115,26 @@ For more information, check out these resources:
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <div align="center">
-  Made with ❤️ by AirLink Labs  & modded by Jishnu
+
+```
+   ___        __  __         __   ____                   __
+  /   | ___  / /_/ /_  ___  / /  / __ \____ _____  ___  / /
+ / /| |/ _ \/ __/ __ \/ _ \/ /  / /_/ / __ `/ __ \/ _ \/ /
+/ ___ /  __/ /_/ / / /  __/ /  / ____/ /_/ / / / /  __/ /
+/_/  |_\___/\__/_/ /_/\___/_/  /_/    \__,_/_/ /_/\___/_/
+```
+
+**AethelPanel**
+
+```
+   ___        __  __         __
+  /   | ___  / /_/ /_  ___  / /
+ / /| |/ _ \/ __/ __ \/ _ \/ /
+/ ___ /  __/ /_/ / / /  __/ /
+/_/  |_\___/\__/_/ /_/\___/_/
+```
+
+**Aethel**
+
+Made with ❤️ by Aethel
 </div>

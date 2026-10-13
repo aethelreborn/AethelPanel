@@ -1,9 +1,9 @@
 /**
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
- *      AirLink - Open Source Project by AirlinkLabs
- *      Repository: https://github.com/airlinklabs/panel
+ *      AethelPanel - Open Source Project by Aethel
+ *      Repository: https://github.com/aethelreborn/AethelPanel
  *
- *     © 2024 AirlinkLabs. Licensed under the MIT License
+ *     © 2024 Aethel. Licensed under the MIT License
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
  */
 
@@ -32,9 +32,9 @@ export const settingsLoader = async () => {
     if (!settings) {
       await prisma.settings.create({
         data: {
-          title: 'AirLink',
+          title: 'AethelPanel',
           description:
-            'AirLink is a free and open source project by AirlinkLabs',
+            'AethelPanel is a free and open source project by Aethel',
           logo: '../assets/logo.png',
           theme: 'default',
           language: 'en',

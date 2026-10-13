@@ -6,26 +6,26 @@ const prisma = new PrismaClient();
 const permissions: string[] = [];
 
 // API Key permissions
-registerPermission('airlink.api.keys.view');
-registerPermission('airlink.api.keys.create');
-registerPermission('airlink.api.keys.delete');
-registerPermission('airlink.api.keys.edit');
+registerPermission('aethelpanel.api.keys.view');
+registerPermission('aethelpanel.api.keys.create');
+registerPermission('aethelpanel.api.keys.delete');
+registerPermission('aethelpanel.api.keys.edit');
 
 // API endpoints permissions
-registerPermission('airlink.api.servers.read');
-registerPermission('airlink.api.servers.create');
-registerPermission('airlink.api.servers.update');
-registerPermission('airlink.api.servers.delete');
-registerPermission('airlink.api.users.read');
-registerPermission('airlink.api.users.create');
-registerPermission('airlink.api.users.update');
-registerPermission('airlink.api.users.delete');
-registerPermission('airlink.api.nodes.read');
-registerPermission('airlink.api.nodes.create');
-registerPermission('airlink.api.nodes.update');
-registerPermission('airlink.api.nodes.delete');
-registerPermission('airlink.api.settings.read');
-registerPermission('airlink.api.settings.update');
+registerPermission('aethelpanel.api.servers.read');
+registerPermission('aethelpanel.api.servers.create');
+registerPermission('aethelpanel.api.servers.update');
+registerPermission('aethelpanel.api.servers.delete');
+registerPermission('aethelpanel.api.users.read');
+registerPermission('aethelpanel.api.users.create');
+registerPermission('aethelpanel.api.users.update');
+registerPermission('aethelpanel.api.users.delete');
+registerPermission('aethelpanel.api.nodes.read');
+registerPermission('aethelpanel.api.nodes.create');
+registerPermission('aethelpanel.api.nodes.update');
+registerPermission('aethelpanel.api.nodes.delete');
+registerPermission('aethelpanel.api.settings.read');
+registerPermission('aethelpanel.api.settings.update');
 
 function registerPermission(permission: string): void {
   if (!permissions.includes(permission)) {

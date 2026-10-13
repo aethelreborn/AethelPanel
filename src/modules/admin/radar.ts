@@ -15,7 +15,7 @@ const radarModule: Module = {
     description: 'This module provides radar scanning functionality for server volumes.',
     version: '1.0.0',
     moduleVersion: '1.0.0',
-    author: 'AirLinkLab',
+    author: 'Aethel',
     license: 'MIT',
   },
 
@@ -117,7 +117,7 @@ const radarModule: Module = {
             {
               headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Basic ${Buffer.from(`Airlink:${server.node.key}`).toString('base64')}`
+                Authorization: `Basic ${Buffer.from(`AethelPanel:${server.node.key}`).toString('base64')}`
               }
             }
           );

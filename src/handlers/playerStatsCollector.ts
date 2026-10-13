@@ -1,9 +1,9 @@
 /**
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
- *      AirLink - Open Source Project by AirlinkLabs
- *      Repository: https://github.com/airlinklabs/panel
+ *      AethelPanel - Open Source Project by Aethel
+ *      Repository: https://github.com/aethelreborn/AethelPanel
  *
- *     © 2024 AirlinkLabs. Licensed under the MIT License
+ *     © 2024 Aethel. Licensed under the MIT License
  * ╳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╳
  */
 
@@ -58,7 +58,7 @@ export async function collectPlayerStats(): Promise<void> {
               port: primaryPort
             },
             auth: {
-              username: 'Airlink',
+              username: 'AethelPanel',
               password: server.node.key,
             },
             timeout: 5000
