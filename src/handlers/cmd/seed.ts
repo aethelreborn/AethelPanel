@@ -39,6 +39,14 @@ interface ImageData {
 
 class Seeder {
   private async promptUser(message: string): Promise<boolean> {
+    // Non-interactive contexts (the installer menu, CI, piped stdin) have no
+    // TTY to answer on, so default to proceeding rather than crashing on
+    // readline "was closed".
+    if (!process.stdin.isTTY) {
+      console.info(`${message.trim()} → yes (non-interactive)`);
+      return true;
+    }
+
     return new Promise((resolve) => {
       rl.question(message, (answer) => {
         resolve(answer.toLowerCase() === 'y');
@@ -172,7 +180,11 @@ class Seeder {
       console.error('Failed during seeding process:', error);
       throw error;
     } finally {
-      rl.close();
+      try {
+        rl.close();
+      } catch {
+        // readline may already be closed (non-interactive run)
+      }
       await prisma.$disconnect();
     }
   }
