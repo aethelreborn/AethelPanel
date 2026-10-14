@@ -94,6 +94,15 @@ run() {
     fi
 }
 
+# Hand a path back to the user who invoked sudo, so later non-root commands
+# (npm run configure, git, editing .env) don't hit EACCES.
+fix_ownership() {
+    local target="$1"
+    if [ -n "${SUDO_USER:-}" ] && [ -d "$target" ]; then
+        chown -R "${SUDO_USER}:${SUDO_USER}" "$target" 2>/dev/null || true
+    fi
+}
+
 # True if we're already inside a checked-out AethelPanel source tree.
 in_panel_repo() {
     [ -f package.json ] && grep -q '"name": "aethelpanel"' package.json 2>/dev/null
@@ -116,6 +125,7 @@ clone_panel() {
     fi
 
     git clone https://github.com/aethelreborn/AethelPanel.git panel
+    fix_ownership panel
 }
 
 make_panel() {
@@ -170,6 +180,7 @@ clone_daemon() {
     fi
 
     git clone --quiet https://github.com/aethelreborn/daemon.git daemon
+    fix_ownership daemon
 }
 
 # True if we're already inside a checked-out Aetheld source tree.
@@ -190,6 +201,9 @@ make_node() {
     run "Installing libs dependencies" "cd libs && npm install --silent && cd .."
     run "Preparing environment file" "test -f .env || cp example.env .env"
     run "Building daemon" "npm run --silent build"
+    # npm/build ran as root under sudo; hand the tree back so the
+    # configure step (and later non-root runs) can write to it.
+    fix_ownership .
 
     # Interactive configure with validation (execution output goes to log)
     while true; do
