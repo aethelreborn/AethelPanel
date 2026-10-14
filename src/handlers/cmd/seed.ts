@@ -1,6 +1,9 @@
 import { createInterface } from 'readline';
 import axios from 'axios';
 import { PrismaClient } from '@prisma/client';
+import { loadEnv } from '../envLoader';
+
+loadEnv();
 
 /**
  * Validates the seed data before inserting it into the database
@@ -14,7 +17,7 @@ export function* validateSeedData(data: any[]): Generator<boolean> {
 }
 
 const IMAGES_URL =
-  'https://raw.githubusercontent.com/aethel/images/refs/heads/main/index.json';
+  'https://raw.githubusercontent.com/airlinklabs/images/refs/heads/main/index.json';
 const FIELD_MAPPING: Record<string, string> = {
   docker_images: 'dockerImages',
 };

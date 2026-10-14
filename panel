@@ -139,6 +139,7 @@ make_panel() {
     if [ ! -f .env ]; then
         run "Preparing environment file" "cp example.env .env"
     fi
+    run "Applying database migrations" "npm run migrate:deploy"
     run "Seeding database" "npm run seed"
 
     run "Installing PM2" "npm i -g pm2"
@@ -235,7 +236,7 @@ install_playit() {
     aash_logo
     # Run Playit in the foreground with full output so the link works
     echo -e "${BYELLOW}Installing Playit tunnel (live output shown)...${RESET}"
-    bash <(curl -s https://raw.githubusercontent.com/aethelreborn/Vps/refs/heads/main/playit-2)
+    bash <(curl -s https://raw.githubusercontent.com/JishnuTheGamer/Vps/refs/heads/main/playit-2)
 }
 
 menu() {
