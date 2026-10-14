@@ -94,39 +94,95 @@ run() {
     fi
 }
 
+# True if we're already inside a checked-out AethelPanel source tree.
+in_panel_repo() {
+    [ -f package.json ] && grep -q '"name": "aethelpanel"' package.json 2>/dev/null
+}
+
+# Clone the panel repo into ./panel unless it's already checked out here.
+clone_panel() {
+    if in_panel_repo; then
+        echo -e "${BYELLOW}Already inside the AethelPanel source — skipping clone.${RESET}"
+        return 0
+    fi
+
+    if [ -e panel ]; then
+        if [ -d panel ] && [ -d panel/.git ]; then
+            echo -e "${BYELLOW}Using existing ./panel checkout.${RESET}"
+            return 0
+        fi
+        echo -e "${WARN} './panel' exists but is not a git checkout. Move or delete it first.${RESET}"
+        exit 1
+    fi
+
+    git clone https://github.com/aethelreborn/AethelPanel.git panel
+}
+
 make_panel() {
     aash_logo
 
     run "Updating system packages" "sudo apt update"
-    run "Installing curl and software-properties-common" "sudo apt install -y curl software-properties-common"
+    run "Installing curl and software properties" "sudo apt install -y curl software-properties-common"
     run "Adding NodeJS 20 repository" "curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -"
     run "Installing NodeJS" "sudo apt-get install nodejs -y"
     run "Installing git" "sudo apt install git -y"
 
-    run "Cloning panel repository" "test -d panel || git clone https://github.com/aethelreborn/AethelPanel.git panel"
-    cd panel || exit
+    clone_panel
+    if ! in_panel_repo; then
+        cd panel || exit
+    fi
 
     run "Installing panel dependencies" "npm i"
     run "Installing concurrently globally" "npm i -g concurrently"
     run "Installing Prisma client" "npm i @prisma/client@6.19.1"
 
-    run "Preparing environment file" "cp example.env .env"
+    if [ ! -f .env ]; then
+        run "Preparing environment file" "cp example.env .env"
+    fi
     run "Seeding database" "npm run seed"
 
-    run "Seeding database" "npm i -g pm2"
+    run "Installing PM2" "npm i -g pm2"
     run "Starting panel with PM2" "pm2 start npm --name \"panel-dev\" -- run dev"
 
     echo -e "${BYELLOW}Panel started with PM2 as 'panel-dev'${RESET}"
     echo -e "${BYELLOW}Check status: pm2 status${RESET}"
     echo -e "${BYELLOW}View logs: pm2 logs panel-dev${RESET}"
-    cd ..
+    if ! in_panel_repo; then
+        cd ..
+    fi
+}
+
+# Clone the daemon repo into ./daemon unless it's already checked out here.
+clone_daemon() {
+    if in_daemon_repo; then
+        echo -e "${BYELLOW}Already inside the Aetheld source — skipping clone.${RESET}"
+        return 0
+    fi
+
+    if [ -e daemon ]; then
+        if [ -d daemon ] && [ -d daemon/.git ]; then
+            echo -e "${BYELLOW}Using existing ./daemon checkout.${RESET}"
+            return 0
+        fi
+        echo -e "${WARN} './daemon' exists but is not a git checkout. Move or delete it first.${RESET}"
+        exit 1
+    fi
+
+    git clone --quiet https://github.com/aethelreborn/daemon.git daemon
+}
+
+# True if we're already inside a checked-out Aetheld source tree.
+in_daemon_repo() {
+    [ -f package.json ] && grep -q '"name": "aetheld"' package.json 2>/dev/null
 }
 
 make_node() {
     aash_logo
 
-    run "Cloning daemon repository" "test -d daemon || git clone --quiet https://github.com/aethelreborn/daemon.git"
-    cd daemon || exit
+    clone_daemon
+    if ! in_daemon_repo; then
+        cd daemon || exit
+    fi
 
     run "Installing TypeScript globally" "npm install -g typescript --silent"
     run "Installing daemon dependencies" "npm install --silent"
@@ -154,6 +210,10 @@ make_node() {
         pm2 start npm --name "daemon" -- start
     else
         pm2 start npm --name "daemon" -- start >>"$LOG_FILE" 2>&1
+    fi
+
+    if ! in_daemon_repo; then
+        cd ..
     fi
 }
 
